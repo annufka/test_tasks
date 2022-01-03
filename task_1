@@ -1,0 +1,28 @@
+# import unittest
+
+directions = {"N": 0, "NE": 45, "E": 90, "SE": 135, "S": 180, "SW": 225, "W": 270, "NW": 315}
+
+def direction(attr: str, value: int):
+    if (directions.get(attr) + value) > 360:
+        result = (directions.get(attr) + (value % 360)) - 360
+    elif (directions.get(attr) + value) < 360:
+        result = directions.get(attr) + value
+    else:
+        result = (directions.get(attr) + value) % 360
+    for item in directions:
+        if directions.get(item) == result:
+            return item
+
+# class Tests(unittest.TestCase):
+#     def test_first(self):
+#         self.assertEqual(direction("S", 180),  "N")
+#
+#     def test_second(self):
+#         self.assertEqual(direction("SE", -45), "E")
+#
+#     def test_third(self):
+#         self.assertEqual(direction("W", 495), "NE")
+#
+#
+# if __name__ == '__main__':
+#     unittest.main()
